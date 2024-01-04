@@ -1,11 +1,13 @@
-{
+import React from "react" // This refers react inside Node module
+import ReactDOM from "react";
+
+
   /* <div id="parent">
     <div id="child">
         <h1>Hello World 1</h1>
          <h1>Hello World 2</h1>
     </div>
 </div> */
-}
 
 const parent = React.createElement(
   "div",

@@ -7,7 +7,7 @@ import Body from "./components/Body"; // Export default
 const AppLayout = () => {
   return (
     <div className="app">
-      <Header/>s
+      <Header/>
       <Body/>
     </div>
   );

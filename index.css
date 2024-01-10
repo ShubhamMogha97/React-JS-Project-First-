@@ -4,7 +4,7 @@
   border: 1px solid black;
 }
 .logo {
-  width: 200px;
+  width: 146px;
 }
 
 .nav-items {
@@ -52,7 +52,7 @@
 .shimmer-Card{
   width: 200px;
   height: 400px;
-  background-color: grey;
+  background-color: aliceblue;
   margin: 20px;
 }
 .shimmer-container{

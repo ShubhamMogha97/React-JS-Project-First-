@@ -17,4 +17,11 @@
     - Links
     - Copyrights
     
-  */  
+  */
+
+# Routing In React JS
+ - Client Side Routing
+ - Server side Routing
+
+# Dynamic Routing in React JS
+ -

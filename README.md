@@ -25,3 +25,26 @@
 
 # Dynamic Routing in React JS
  -
+
+ # Life cycle works in React JS
+ 
+  - Parent constructor
+  - Parent Render
+  
+    - First constructor
+    - First render
+  
+    - Second constructor
+    - Second render
+ 
+    - Third constructor
+    - Third render
+
+    <DOM UPDATED IN SINGLE BATCH>
+  
+   - FirstComponentDidMount
+   - SecondComponentDidMount
+   - ThirdComponentDidMount
+
+ - Parent ComponentDidMount
+ 

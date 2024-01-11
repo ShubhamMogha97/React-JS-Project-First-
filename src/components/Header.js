@@ -7,14 +7,14 @@ import { Link } from "react-router-dom";
 export const Header = () => {
   // Named Export
   // let btnNmae = "Login";
-  console.log("Body Rendered");
+  // console.log("Body Rendered");
 
   const [loginBtn, setloginBtn] = useState("Login"); //Login and Logout Functionality
   // If there is  dependency array useEffect render once
   // If there is no dependency array useEffect render everytime
   // if something there in dependency array whenever state gets changed useEffect will be rendered respectively
   useEffect(() => {
-    console.log("Use Effect is called");
+    // console.log("Use Effect is called");
   }, []);
   // whenever we update the state the entire component gets renrendered
   return (

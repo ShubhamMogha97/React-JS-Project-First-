@@ -70,3 +70,6 @@ display: flex;
 .search-btn{
 margin-left: 5px;
 }
+.user-card{
+  border: 1px solid black;
+}

@@ -14,8 +14,8 @@ class About extends Component {
       <div>
         <h2>This is About US Page in class Component</h2>
         <User name={"First"} location={"Dehradun"} />
-        <User name={"Second"} location={"Dehradun"} />
-        <User name={"Third"} location={"Dehradun"} />
+        {/* <User name={"Second"} location={"Dehradun"} />
+        <User name={"Third"} location={"Dehradun"} /> */}
       </div>
     );
   }

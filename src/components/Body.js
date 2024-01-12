@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import UseOnlineStatus from "../../utils/useOnlineStatus";
 // import resList from "../../utils/mockdata";
 
 // We are mapping restaurantList array and passing data to RestaurantCard component as props with unique key as index
@@ -38,6 +39,12 @@ const Body = () => {
   //   return <Shimmer/>
   // }
   // Conditional Rendering
+
+const onlineStatus=UseOnlineStatus()
+
+if(onlineStatus===false) return <h1>Opps, You are not online please check your internet connection</h1>
+
+
   return listofRestaurant?.length == 0 ? (
     <Shimmer />
   ) : (

@@ -1,12 +1,13 @@
-import React from "react"; // This refers react inside Node module
+import React, { lazy, Suspense } from "react"; // This refers react inside Node module
 import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header"; // Named export
-import Body from "./components/Body"; // Export default
+// import Body from "./components/Body"; // Export default
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+// import Grocery from "./components/Grocery";
 
 const AppLayout = () => {
   return (
@@ -16,7 +17,13 @@ const AppLayout = () => {
     </div>
   );
 };
-
+// chunking
+// Lazy Loading - It comes when it loads only
+// Dynamic bundling
+// code splitting
+// dynamic Import
+const Grocery = lazy(() => import("./components/Grocery"));
+const Body = lazy(() => import("./components/Body"));
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -24,8 +31,12 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path:"/",
-        element:<Body/>
+        path: "/",
+        element: (
+          <Suspense fallback={<h3>Body page is laoding</h3>}>
+            <Body />
+          </Suspense>
+        ),
       },
       {
         path: "/about",
@@ -36,10 +47,18 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path:"/restaurants/:resId",
-        
-        element:<RestaurantMenu/>
-      }
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h2>Page is loading........, Please wait</h2>}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/restaurants/:resId",
+
+        element: <RestaurantMenu />,
+      },
     ],
   },
 ]);

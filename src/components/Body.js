@@ -50,18 +50,17 @@ if(onlineStatus===false) return <h1>Opps, You are not online please check your i
   ) : (
     <div className="body">
       {/* <div className="search">Search</div> */}
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4">
           <input
             type="text"
-            className="search-box"
+            className="border border-solid border-black"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
-          <button
-            class="search-btn"
+          <button className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             // Filter the Restaurant and Update the UI
             // Search Functionality
             onClick={() => {
@@ -77,8 +76,9 @@ if(onlineStatus===false) return <h1>Opps, You are not online please check your i
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
+        <div className="search p-4 m-4 flex items-center">
+        <button 
+          className="px-4 py-2 bg-gray-100 rounded-lg"
           onClick={() => {
             // Filter List of Restaurant
             let data = listofRestaurant.filter((res) => res.data.avgRating > 4);
@@ -88,8 +88,9 @@ if(onlineStatus===false) return <h1>Opps, You are not online please check your i
         >
           Top Reated Restaurant
         </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {/* <RestaurantCard resData = {restaurantList[1]}/>
         <RestaurantCard resData = {restaurantList[2]}/>
         <RestaurantCard resData = {restaurantList[3]}/>

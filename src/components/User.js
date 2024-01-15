@@ -39,7 +39,7 @@ class User extends React.Component {
     // const { name, location } = this.props; // Destructing in Class componenet
     // Render method will retun some piece of JSX
     return (
-      <div className="user-card">
+      <div className="user-card m-4 p-4 bg-gray-200 rounded-lg">
         <h3>This is User Page in Class Component</h3>
         <h2>{name}</h2>
         <h2>{location}</h2>

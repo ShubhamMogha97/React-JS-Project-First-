@@ -1,21 +1,25 @@
 // Body Component for body section: It contain all restaurant cards
 
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromtedlables } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UseOnlineStatus from "../../utils/useOnlineStatus";
+
 // import resList from "../../utils/mockdata";
 
 // We are mapping restaurantList array and passing data to RestaurantCard component as props with unique key as index
 const Body = () => {
   const [listofRestaurant, setlistofRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const RestaurantcardPromted = withPromtedlables(RestaurantCard);
+
   // const [filteredRestaurant, setFilteredRestaurant] = useState(""); //state representing the search text of the input f
 
   // whenever we change local state, react get rendered component
 
-  console.log("searchText", searchText);
+  console.log("listofRestaurant112122111--------", listofRestaurant);
+
   useEffect(() => {
     fetchData();
     // console.log("UseEffect called ")
@@ -30,7 +34,7 @@ const Body = () => {
     let checkData =
       jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants;
-    console.log("checkData", checkData);
+    console.log("checkData-------", checkData);
     setlistofRestaurant(checkData);
   };
   console.log("Body rendered");
@@ -43,7 +47,6 @@ const Body = () => {
 const onlineStatus=UseOnlineStatus()
 
 if(onlineStatus===false) return <h1>Opps, You are not online please check your internet connection</h1>
-
 
   return listofRestaurant?.length == 0 ? (
     <Shimmer />
@@ -81,8 +84,8 @@ if(onlineStatus===false) return <h1>Opps, You are not online please check your i
           className="px-4 py-2 bg-gray-100 rounded-lg"
           onClick={() => {
             // Filter List of Restaurant
-            let data = listofRestaurant.filter((res) => res.data.avgRating > 4);
-            console.log(data);
+            let data = listofRestaurant.filter((res) => res.info?.avgRating > 4.3);
+            console.log("data Info------",data);
             setlistofRestaurant(data);
           }}
         >
@@ -90,15 +93,21 @@ if(onlineStatus===false) return <h1>Opps, You are not online please check your i
         </button>
         </div>
       </div>
-      <div className="flex flex-wrap">
+      <div className="ml-20 flex flex-wrap">
         {/* <RestaurantCard resData = {restaurantList[1]}/>
         <RestaurantCard resData = {restaurantList[2]}/>
         <RestaurantCard resData = {restaurantList[3]}/>
         <RestaurantCard resData = {restaurantList[4]}/>
         <RestaurantCard resData = {restaurantList[5]}/> */}
+      
         {listofRestaurant.map((restaurant) => (
           <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
-            <RestaurantCard resData={restaurant} />
+       
+            {restaurant.info.type=="F" ? (
+              <RestaurantcardPromted resData={restaurant} />
+             ): (
+             <RestaurantCard resData={restaurant} />
+             )}
           </Link>
         ))}
       </div>

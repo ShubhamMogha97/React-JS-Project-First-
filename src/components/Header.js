@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { LOGO_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
 import UseOnlineStatus from "../../utils/useOnlineStatus";
+import UserContext from "../../utils/userContext";
 
 // Header component for header section: Logo, Nav Items
 export const Header = () => {
@@ -11,6 +12,8 @@ export const Header = () => {
 
   const [loginBtn, setloginBtn] = useState("Login"); //Login and Logout Functionality
   const onlineStatus= UseOnlineStatus()
+  let {loggedUser} = useContext(UserContext);
+  
   // If there is  dependency array useEffect render once
   // If there is no dependency array useEffect render everytime
   // if something there in dependency array whenever state gets changed useEffect will be rendered respectively
@@ -39,6 +42,7 @@ export const Header = () => {
             <Link to="/grocery">Grocery</Link>
           </li>
           <li className="px-4">Cart</li>
+        
           <button
             className="login"
             onClick={() => {
@@ -49,6 +53,7 @@ export const Header = () => {
           >
             {loginBtn}
           </button>
+          <li className="px-4 font-bold">{loggedUser}</li>
         </ul>
       </div>
     </div>

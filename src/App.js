@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react"; // This refers react inside Node module
+import React, { lazy, Suspense, useEffect, useState } from "react"; // This refers react inside Node module
 import ReactDOM from "react-dom/client";
 import { Header } from "./components/Header"; // Named export
 // import Body from "./components/Body"; // Export default
@@ -7,14 +7,28 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "../utils/userContext";
 // import Grocery from "./components/Grocery";
 
 const AppLayout = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    const data = {
+      name: "Shubham Mogha",
+    };
+    setUserName(data.name);
+  },[]);
+  // change the value of default UserContext
+
   return (
+    <UserContext.Provider value={{ loggedUser: userName }}> {/*  */}
     <div className="app">
-      <Header /> {/*Header wull fix here */}
+      <UserContext.Provider value={{ loggedUser: "userName" }}>
+        <Header /> {/*Header wull fix here */}
+      </UserContext.Provider>
       <Outlet />
     </div>
+    </UserContext.Provider>
   );
 };
 // chunking
@@ -56,7 +70,6 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurants/:resId",
-
         element: <RestaurantMenu />,
       },
     ],
